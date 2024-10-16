@@ -1,10 +1,12 @@
-FROM python:3.12.4
+FROM node:alpine3.19
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY package*.json .
+# Install npm package
+RUN npm install npm
 
-RUN apt-get update && apt-get install -y \
-  libpq-dev \
-  && pip install --upgrade pip \
-  && pip install -r requirements.txt
+COPY . .
+
+RUN apk update && apk add --no-cache git
+RUN apk add sudo

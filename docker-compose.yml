@@ -1,11 +1,14 @@
 services:
-  python:
+  node:
     build:
       context: ./
       dockerfile: Dockerfile
     container_name: boardgame_back
+    ports:
+      - "8080:8080"
     tty: true
     volumes:
+      - /app/node_modules
       - type: bind
         source: ./
         target: /app
