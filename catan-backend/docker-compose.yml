@@ -1,0 +1,14 @@
+services:
+  node:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: catan-backend
+    ports:
+      - "8080:8080"
+    tty: true
+    volumes:
+      - /app/node_modules
+      - type: bind
+        source: ./
+        target: /app
