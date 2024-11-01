@@ -7,8 +7,5 @@ class GameRoom {
     }
 }
 
-const r1 = new GameRoom('test1', ['Ken'])
-const r2 = new GameRoom('test2', ['Ken'])
-
 module.exports = GameRoom;
 
