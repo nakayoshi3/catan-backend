@@ -1,5 +1,6 @@
 class Tile {
-    constructor(vertexList, edgeList, activeNumber, resource, knignt){
+    constructor(id, vertexList, edgeList, activeNumber, resource, knignt){
+        this.id = id
         this.vertexList = vertexList
         this.edgeList = edgeList
         this.activeNumber = activeNumber
@@ -7,3 +8,5 @@ class Tile {
         this.knignt = knignt
     }
 }
+
+module.exports = Tile;

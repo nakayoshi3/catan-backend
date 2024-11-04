@@ -9,3 +9,5 @@ class Player {
         this.point = point
     }
 }
+
+module.exports = Player;

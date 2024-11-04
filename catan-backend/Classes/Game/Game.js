@@ -1,8 +1,10 @@
 class Game {
-    constructor(playerList, board, restOfDevelopment, turn) {
+    constructor(playerList, board) {
         this.playerList = playerList
         this.board = board
-        this.restOfDevelopment = restOfDevelopment
-        this.turn = turn
+        this.restOfDevelopment = 25
+        this.turn = playerList[0]
     }
 }
+
+module.exports = {Game}

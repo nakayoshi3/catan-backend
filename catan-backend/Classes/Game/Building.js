@@ -18,3 +18,5 @@ class Settlement extends Town {
 class City extends Town {
     
 }
+
+module.exports = Building;
