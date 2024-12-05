@@ -19,4 +19,4 @@ class City extends Town {
     
 }
 
-module.exports = Building;
+module.exports = {Building, Town, Road, Settlement, City};

@@ -1,11 +1,14 @@
 //ゲームルームのクラス定義
 //ゲームルーム名と所属するプレイヤーのリストをフィールド
-class GameRoom {
+class Room {
     constructor(name, playerList) {
         this.name = name
         this.playerList = playerList
     }
+
+    toString() {
+        return `Room(name: ${this.name}, players: ${this.playerList.join(", ")})`;
+    }
 }
 
-module.exports = GameRoom;
-
+module.exports = Room;
