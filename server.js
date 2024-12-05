@@ -13,19 +13,19 @@ const startGame = require('./Event/startGame');
 
 const io = socketIo(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || "http://localhost:3000", // HerokuのURLを環境変数で管理
+    origin: process.env.FRONTEND_URL || "http://localhost:3000" || "https://katan-project-ef08acf343f3.herokuapp.com/", // HerokuのURLを環境変数で管理
     methods: ["GET", "POST"],
     credentials: true
   }
 });
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL || "http://localhost:3000"); // こちらも環境変数で管理
+  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL || "http://localhost:3000" || "https://katan-project-ef08acf343f3.herokuapp.com/"); // こちらも環境変数で管理
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
-const PORT = process.env.PORT || 8080; // Herokuのポート番号を使い、ローカルでは8080を使う
+const PORT = process.env.PORT || 8080 || "https://katan-project-ef08acf343f3.herokuapp.com/"; // Herokuのポート番号を使い、ローカルでは8080を使う
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
