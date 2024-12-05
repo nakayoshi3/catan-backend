@@ -13,7 +13,7 @@ const startGame = require('./Event/startGame');
 
 const io = socketIo(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || "http://localhost:3000" || "https://katan-project-ef08acf343f3.herokuapp.com/", // HerokuのURLを環境変数で管理
+    origin:  "https://katan-project-ef08acf343f3.herokuapp.com/", // HerokuのURLを環境変数で管理
     methods: ["GET", "POST"],
     credentials: true
   }
