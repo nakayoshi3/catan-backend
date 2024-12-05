@@ -13,20 +13,22 @@ const startGame = require('./Event/startGame');
 
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.FRONTEND_URL || "http://localhost:3000", // HerokuのURLを環境変数で管理
     methods: ["GET", "POST"],
     credentials: true
   }
 });
 
-app.use(cors({
-  origin: "http://localhost:3000",
-  methods: ['POST', 'GET'],
-  credentials: true
-}));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL || "http://localhost:3000"); // こちらも環境変数で管理
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-server.listen(8080, () => {
-  console.log('Server is running on port 8080');
+const PORT = process.env.PORT || 8080; // Herokuのポート番号を使い、ローカルでは8080を使う
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
 app.use((req, res, next) => {
