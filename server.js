@@ -13,14 +13,14 @@ const startGame = require('./Event/startGame');
 
 const io = socketIo(server, {
   cors: {
-    origin:  "https://katan-project-ef08acf343f3.herokuapp.com", // HerokuのURLを環境変数で管理
+    origin:  "http://localhost:3000" || "https://katan-project-ef08acf343f3.herokuapp.com", // HerokuのURLを環境変数で管理
     methods: ["GET", "POST"],
     credentials: true
   }
 });
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://katan-project-ef08acf343f3.herokuapp.com"); // こちらも環境変数で管理 process.env.FRONTEND_URL || "http://localhost:3000" ||
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000" || "https://katan-project-ef08acf343f3.herokuapp.com"); // こちらも環境変数で管理 process.env.FRONTEND_URL || "http://localhost:3000" ||
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });

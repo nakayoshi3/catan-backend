@@ -33,6 +33,15 @@ class Tile {
         return result
     }
 
+    hasVertex(id) {
+        for (let i =0; i <this.vertexList.length; i++) {
+            if (this.vertexList[i].id === id) {
+                return true
+            }
+        }
+        return false
+    }
+
     connectVertexEdge() {
         //少し難しいことしてる。タイルのエッジと頂点のうち隣接しているものを全て繋ぐ
 

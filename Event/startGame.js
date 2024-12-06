@@ -4,6 +4,7 @@ const GameManager = require("../Classes/Game/GameManager")
 const { Road, Settlement, City } = require("../Classes/Game/Building")
 const Tile = require("../Classes/Game/Tile")
 const Player = require("../Classes/Game/Player")
+const { Wood, Brick, Wool, Grain, Ore } = require("../Classes/Game/Resource")
 
 
 module.exports = (io, socket, gameManager) => {
@@ -155,6 +156,24 @@ module.exports = (io, socket, gameManager) => {
                     game.board.vertices[id].town = new Settlement(player)
                     player.restOfSettlement -= 1
                     player.point += 1
+                    if (initTurn < game.turns) { //もし２巡目なら周りのタイルの資源を追加する
+                        const tiles = game.board.getTilesFromId(id)
+                        const props = { wood: 0, brick: 0, wool: 0, grain: 0, ore: 0 }
+                        for(let i = 0;i <tiles.length;i++) {
+                            if (tiles[i].resource instanceof Wood) {
+                                props.wood = 1
+                            } else if (tiles[i].resource instanceof Brick) {
+                                props.brick = 1
+                            } else if (tiles[i].resource instanceof Wool) {
+                                props.wool = 1
+                            } else if (tiles[i].resource instanceof Grain) {
+                                props.grain = 1
+                            } else if (tiles[i].resource instanceof Ore) {
+                                props.ore = 1
+                            }
+                        }
+                        player.addResourcePlayer(props)
+                    }
                     io.to(`${game.name}`).emit('putInitialSettlement', { playerProps: player.props(), id: id, color: player.color })
                     game.board.vertices[id].activeTradingPost(player) // socket.emit('activateTradingPost')してる
                 } else {

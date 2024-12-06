@@ -10,6 +10,8 @@ class Game {
         this.turns = 1
     }
 
+
+
     initDevelopmentList() {
         const initialDevList = []
         for (let i = 0; i < 14; i++) {

@@ -21,6 +21,16 @@ class Board {
         return result;
     }
 
+    getTilesFromId(id) {
+        const result = []
+        for(let i = 0;i < this.tileList.length; i++) {
+            if (this.tileList[i].hasVertex(id)) {
+                result.push(this.tileList[i])
+            }
+        }
+        return result
+    }
+
     distribute(number) {
         const targetTiles = this.getTiles(number)
         for (let i = 0; i < targetTiles.length; i++) {
