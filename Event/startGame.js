@@ -390,12 +390,6 @@ module.exports = (io, socket, gameManager) => {
             }
         })
 
-
-
-
-
-
-
     })
 }
 
