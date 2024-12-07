@@ -349,8 +349,10 @@ module.exports = (io, socket, gameManager) => {
             }
 
         })
+
         socket.on('failTrade', (player) => {
             console.log('failTrade', player)
+            const requestPlayer = game.getPlayer(null, player) 
             requestPlayer.socket.emit('showMessage', '取引は拒否されました')
         })
 
