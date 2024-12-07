@@ -5,7 +5,7 @@ class Game {
         this.name = name
         this.playerList = playerList
         this.board = null
-        this.developmentList = { knight: 100, point: 5, buildRoad: 2, drawCard: 2, monopoly: 2 }
+        this.developmentList = { knight: 14, point: 5, buildRoad: 2, drawCard: 2, monopoly: 2 }
         this.turn = playerList[0]
         this.turns = 1
     }
