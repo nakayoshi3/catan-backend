@@ -5,6 +5,8 @@ const startGame = require("./startGame");
 
 module.exports = (io, socket, gameManager) => {
 
+    const numberOfPlayer =  3
+
     socket.on('joinRoom', (playerRoomInfo) => {
         console.log('joinRoomイベントを受け取りました')
         if (gameManager.searchGame(playerRoomInfo.room)) {
