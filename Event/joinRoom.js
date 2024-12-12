@@ -9,14 +9,14 @@ module.exports = (io, socket, gameManager) => {
         console.log('joinRoomイベントを受け取りました')
         if (gameManager.searchGame(playerRoomInfo.room)) {
             const targetGame = gameManager.getGame(playerRoomInfo.room)
-            if (targetGame.playerList.length <= 3) {
+            if (targetGame.playerList.length <= numberOfPlayer-1) {
                 const player = new Player(playerRoomInfo.player, socket)
                 targetGame.playerList.push(player)
                 socket.join(`${playerRoomInfo.room}`);
                 socket.emit('roomFound', true)
                 console.log('emit roomFound Event with a value true')
 
-                if (targetGame.playerList.length >= 4) { //デバッグ用で2
+                if (targetGame.playerList.length >= numberOfPlayer) { //デバッグ用で2
                     const board = generateBoard()
                     board.addRandomResource()
                     board.addActivNumberBoard('default')
