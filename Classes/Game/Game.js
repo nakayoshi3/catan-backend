@@ -121,7 +121,7 @@ class Game {
 
     nextTurn(config = 'default') {
         //this.turnを次のターンのプレイイヤーに変更する
-        const numberOfPlayers = 4 //ここを変える
+        const numberOfPlayers = 3 //ここを変える
 
         const currentIndex = this.playerList.indexOf(this.turn)
         this.turns += 1
